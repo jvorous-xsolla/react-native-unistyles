@@ -14,6 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install and build
+        run: |
+          yarn install
+
       - name: Remove react-native-macos from peerDependencies
         run: |
           jq 'if .peerDependencies then .peerDependencies |= with_entries(select(.key != "react-native-macos")) else . end' package.json > temp.json
