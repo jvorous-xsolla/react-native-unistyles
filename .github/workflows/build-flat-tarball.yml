@@ -16,7 +16,7 @@ jobs:
 
       - name: Install and build
         run: |
-          yarn install
+          yarn install --immutable
 
       - name: Remove react-native-macos from peerDependencies
         run: |
