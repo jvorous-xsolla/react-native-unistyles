@@ -1,0 +1,36 @@
+name: Build Flat Tarball for Snack
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Create Flat .tar.gz for Snack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Remove react-native-macos from peerDependencies
+        run: |
+          jq 'if .peerDependencies then .peerDependencies |= with_entries(select(.key != "react-native-macos")) else . end' package.json > temp.json
+          mv temp.json package.json
+
+      - name: Create flat tarball (no top folder)
+        run: |
+          mkdir flat
+          shopt -s dotglob
+          cp -r * flat/
+          tar -czf react-native-unistyles-flat.tar.gz -C flat .
+
+      - name: Upload tarball to GitHub Release (latest)
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Snack-Friendly Tarball
+          tag_name: snack-latest
+          files: react-native-unistyles-flat.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
