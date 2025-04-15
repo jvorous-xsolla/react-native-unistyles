@@ -116,7 +116,6 @@
     "typescript": "5.7.3"
   },
   "peerDependencies": {
-    "@react-native/normalize-colors": "*",
     "react": "*",
     "react-native": ">=0.76.0",
     "react-native-edge-to-edge": "*",
