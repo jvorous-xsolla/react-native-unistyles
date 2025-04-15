@@ -19,6 +19,11 @@ jobs:
           jq 'if .peerDependencies then .peerDependencies |= with_entries(select(.key != "react-native-macos")) else . end' package.json > temp.json
           mv temp.json package.json
 
+      - name: Install and build
+        run: |
+          yarn install --immutable
+          yarn build
+
       - name: Create flat tarball (no top folder)
         run: |
           mkdir flat
