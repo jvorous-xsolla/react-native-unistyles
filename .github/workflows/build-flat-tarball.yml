@@ -23,7 +23,11 @@ jobs:
         run: |
           mkdir flat
           shopt -s dotglob
-          cp -r * flat/
+          for file in *; do
+            if [ "$file" != "flat" ]; then
+              cp -r "$file" flat/
+            fi
+          done
           tar -czf react-native-unistyles-flat.tar.gz -C flat .
 
       - name: Upload tarball to GitHub Release (latest)
