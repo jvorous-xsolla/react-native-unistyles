@@ -18,31 +18,6 @@
   "module": "lib/module/index.js",
   "types": "lib/typescript/src/index.d.ts",
   "source": "src/index",
-  "exports": {
-    ".": {
-      "types": "./lib/typescript/src/index.d.ts",
-      "module": "./lib/module/index.js",
-      "react-native": "./src/index.ts",
-      "default": "./lib/commonjs/index.js"
-    },
-    "./components/native/*": {
-      "module": "./lib/module/components/native/*",
-      "react-native": "./src/components/native/*",
-      "default": "./lib/commonjs/components/native/*"
-    },
-    "./plugin": {
-      "module": "./plugin/index.js",
-      "types": "./plugin/index.d.ts",
-      "default": "./plugin/index.js"
-    },
-    "./package.json": "./package.json",
-    "./server": {
-      "types": "./lib/typescript/src/server/index.d.ts",
-      "module": "./lib/module/server/index.js",
-      "react-native": "./src/server.ts",
-      "default": "./lib/commonjs/server/index.js"
-    }
-  },
   "files": [
     "src",
     "lib",
