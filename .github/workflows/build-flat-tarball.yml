@@ -21,7 +21,7 @@ jobs:
 
       - name: Install and build
         run: |
-          yarn install --immutable
+          yarn install
           yarn build
 
       - name: Create flat tarball (no top folder)
